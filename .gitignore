@@ -1,0 +1,6 @@
+*.class
+
+# Directories #
+/build/
+/bin/
+target/
