@@ -1,6 +1,13 @@
 *.class
+.project
+.classpath
 
 # Directories #
 /build/
 /bin/
 target/
+.settings/
+
+
+# OS Files #
+.DS_Store
