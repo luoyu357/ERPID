@@ -34,6 +34,7 @@ public class HandleSystem {
 	public String handlePrefix;
 	public String admin_privKey_file;
 	public String handle_admin_identifier;
+	public String password;
 	
 	public HandleSystem() throws IOException{
 		this.property = (new Property()).property;
@@ -41,6 +42,7 @@ public class HandleSystem {
 		this.handlePrefix = this.property.getProperty("handle.prefix");
 		this.admin_privKey_file = this.property.getProperty("private.key.file");
 		this.handle_admin_identifier = this.property.getProperty("handle.admin.identifier");
+		this.password = this.property.getProperty("private.key.file.password");
 	}
 
 	public JSONObject httpResolve(String pidID) throws Exception {
@@ -92,7 +94,7 @@ public class HandleSystem {
 		HandleResolver resolver = new HandleResolver();
 		
 		File privKeyFile = new File(this.admin_privKey_file);
-		PrivateKey hdl_adm_priv = net.handle.hdllib.Util.getPrivateKeyFromFileWithPassphrase(privKeyFile, "luoyu");
+		PrivateKey hdl_adm_priv = net.handle.hdllib.Util.getPrivateKeyFromFileWithPassphrase(privKeyFile, this.password);
 		byte adm_handle[] = Util.encodeString(this.handle_admin_identifier);
 		AuthenticationInfo auth = new net.handle.hdllib.PublicKeyAuthenticationInfo(adm_handle, 300, hdl_adm_priv);
 		
