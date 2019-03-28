@@ -69,4 +69,10 @@ public class DataTypeRegistry {
 			return profile;
 		}
 	}
+	
+	
+	public static void main(String[] args) throws Exception {
+		DataTypeRegistry test = new DataTypeRegistry();
+		System.out.println(test.httpQuery("11723/cfc46f3101b9f0dce789").toString(4));
+	}
 }
